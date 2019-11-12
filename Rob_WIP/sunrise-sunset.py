@@ -1,6 +1,8 @@
 import requests
 import csv
 import pprint
+import pandas as pd
+
 
 
 def get_latlong(city):
@@ -41,23 +43,24 @@ def get_shortest_longest_day(latitude, longitude):
 # Start with simple list of cities
 
 cityfile = '../data/citylist.csv'
+daydata = '../data/daydata.csv'
 citydata = []
 
 with open(cityfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for city in csv_reader:
-        lat, long = get_latlong(city[0])
-        short, long = get_shortest_longest_day(lat, long)
+        lat, lng = get_latlong(city[0])
+        short, long = get_shortest_longest_day(lat, lng)
         info = {
             "city": city[0],
             "lat": lat,
-            "long": long,
+            "lng": lng,
             "shortest_day": short,
             "longest_day": long
         }
         citydata.append(info)
+    df = pd.DataFrame(citydata)
 
-pprint.pprint(citydata)
-
+df.to_csv(daydata, index=False)
 
 
