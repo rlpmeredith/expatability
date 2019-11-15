@@ -42,17 +42,17 @@ def get_shortest_longest_day(latitude, longitude):
 
 # Start with simple list of cities
 
-cityfile = '../data/citylist.csv'
-daydata = '../data/daydata.csv'
+cityfile = '../data/ctry_capitals.csv'
+daydata = '../data/sunrise-sunset.csv'
 citydata = []
 
 with open(cityfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for city in csv_reader:
-        lat, lng = get_latlong(city[0])
+        lat, lng = get_latlong(city[3])
         short, long = get_shortest_longest_day(lat, lng)
         info = {
-            "city": city[0],
+            "city": city[3],
             "lat": lat,
             "lng": lng,
             "shortest_day": short,

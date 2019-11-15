@@ -49,21 +49,22 @@ def average_weather(city):
 
     return jan_avg_temp, july_avg_temp
 
-cityfile = '../data/citylist.csv'
-tempdata = '../data/tempdata.csv'
+cityfile = '../data/ctry_capitals.csv'
+tempdata = '../data/average-weather.csv'
 data = []
 
 with open(cityfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for city in csv_reader:
-        print(city)
-        jan, july = average_weather(city[0])
-        info = {
-            "city": city[0],
-            "jan_avg": jan,
-            "jul_avg": july,
-        }
-        data.append(info)
+        if city[0]:
+            print(city[3])
+            jan, july = average_weather(city[3])
+            info = {
+                "city": city[3],
+                "jan_avg": jan,
+                "jul_avg": july,
+            }
+            data.append(info)
     df = pd.DataFrame(data)
 
 df.to_csv(tempdata, index=False)

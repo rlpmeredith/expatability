@@ -23,49 +23,48 @@ def web_scraper():
         row_list.append(row)
     return row_list
 
+# Run function to scrape page
+
 row_list = web_scraper()
-# print(type(row_list))
 
+# Create dictionary from list so we have dict of Countries from page
 
-ctry_dict = {}
+country_dict = {}
 for country in row_list:
     if len(country) > 0:
-        ctry_dict[country[1]] = country[0]
-# print(ctry_dict)
-print(row_list)
+        country_dict[country[1]] = country[0]
 
 # Iterate over list from scraper & create final list to include countries from
 # World Happiness list only if they are in ctry_capitals.csv
 
-Eur_data = []
-ctryfile = 'ctry_capitals.csv'
+happiness_data = []
+countryfile = '../data/ctry_capitals.csv'
 new_list = []
+info = {}
 
-with open(ctryfile) as csv_file:
+with open(countryfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
-    for ctry in csv_reader:
-        Country = ctry[1]
-        if Country in ctry_dict:
-            index = ctry_dict[Country]
-            new_list = row_list[index]
-            rank = new_list[0]
+    for country in csv_reader:
+        country_name = country[1]
+        if country_name in country_dict:
+            index = int(country_dict[country_name])
             info = {
-                'Overall rank': rank,
-                'Country or region',
-                'Score',
-                'GDP per capita',
-                'Social support',
-                'Healthy life expectancy',
-                'Freedom to make life choices',
-                'Generosity',
-                'Perceptions of corruption'
+                'Rank': row_list[index][0],
+                'Country': row_list[index][1],
+                'Score': row_list[index][2],
+                'GDP per capita': row_list[index][3],
+                'Social support': row_list[index][4],
+                'Healthy life expectancy': row_list[index][5],
+                'Freedom to make life choices': row_list[index][6],
+                'Generosity': row_list[index][7],
+                'Perceptions of corruption': row_list[index][8],
             }
-            Eur_data.append(info)
+            happiness_data.append(info)
 
 
-df = pd.DataFrame(Eur_data)
+df = pd.DataFrame(happiness_data)
 df.dropna(axis=0, how='any', inplace=True)
-df.to_csv('world_happiness.csv', index=False)
+df.to_csv('../data/world_happiness.csv', index=False)
 
 
 # df = pd.DataFrame(row_list, columns=['Overall_rank', 'Country_or_Region', 'Score', 'GDP_per_capita',
