@@ -36,4 +36,4 @@ df = pd.DataFrame(row_list, columns=['Country_or_Territory', 'Area', 'Population
 df.dropna(axis=0, how='any', inplace=True)
 df.drop(['Area', 'Pop_density'], axis=1, inplace=True)
 
-df.to_csv('../data/ctry_capitals.csv')
+df.to_csv('../data/ctry_capitals.csv', index=False)
