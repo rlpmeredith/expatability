@@ -49,7 +49,7 @@ citydata = []
 with open(cityfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for city in csv_reader:
-        lat, lng = get_latlong(city[3])
+        lat, lng = get_latlong(city[2])
         short, long = get_shortest_longest_day(lat, lng)
         info = {
             "city": city[3],

@@ -45,7 +45,7 @@ info = {}
 with open(countryfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for country in csv_reader:
-        country_name = country[1]
+        country_name = country[0]
         if country_name in country_dict:
             index = int(country_dict[country_name])
             info = {

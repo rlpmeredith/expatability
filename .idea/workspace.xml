@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f3decb5-acb5-420d-83c6-056d9cca14cf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/average-weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/average-weather.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/cost_living_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/cost_living_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/loadscripts/countryload.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/loadscripts/countryload.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/sunrise-sunset.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/sunrise-sunset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/world_happiness.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/world_happiness.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,8 +156,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.countryload" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.immigrant" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.average-weather (1)" />
         <item itemvalue="Python.sunrise-sunset (1)" />
       </list>
@@ -175,6 +175,9 @@
       <updated>1573399870095</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

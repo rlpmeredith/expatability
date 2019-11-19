@@ -85,7 +85,7 @@ src_file = "../data/ctry_capitals.csv"
 with open(src_file) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for capital in csv_reader:
-        name = capital[3]
+        name = capital[2]
         name = name.replace(" ", "-")
         print(name)
 

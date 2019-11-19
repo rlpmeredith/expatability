@@ -60,7 +60,7 @@ with open(cityfile) as csv_file:
             print(city[3])
             jan, july = average_weather(city[3])
             info = {
-                "city": city[3],
+                "city": city[2],
                 "jan_avg": jan,
                 "jul_avg": july,
             }
