@@ -2,10 +2,6 @@ from . import db
 import sqlalchemy
 
 
-# Create mappping table to link capital with some tables, and country with others..?
-# Do we have some one-to-many and other many to many relationships?
-
-
 
 class City(db.Model):
     __tablename__ = 'capitals'
@@ -14,6 +10,7 @@ class City(db.Model):
                         primary_key=True)
 
     country_or_territory = db.Column(db.String(64),
+                        db.ForeignKey('countries.country_or_territory'),
                         index=True,
                         unique=False,
                         nullable=False)
@@ -22,6 +19,13 @@ class City(db.Model):
                         index=False,
                         unique=False,
                         nullable=False)
+
+
+class Country(db.Model):
+    __tablename__ = 'countries'
+
+    country_or_territory = db.Column(db.String(64),
+                                     primary_key=True)
 
 
 class Cost(db.Model):
@@ -61,7 +65,7 @@ class Happiness(db.Model):
     __tablename__ = 'world_happiness'
 
     country = db.Column(db.String(64),
-                        # db.ForeignKey('capitals.country_or_territory'),
+                        db.ForeignKey('countries.country_or_territory'),
                         primary_key=True)
 
     rank = db.Column(db.Integer,
@@ -99,7 +103,7 @@ class Migrant(db.Model):
     __tablename__ = 'migrant_acceptance'
 
     country = db.Column(db.String(64),
-                        # db.ForeignKey('capitals.country_or_territory'),
+                        db.ForeignKey('countries.country_or_territory'),
                         primary_key=True)
 
     index = db.Column(db.Float,
