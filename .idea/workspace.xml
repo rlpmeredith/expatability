@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2f3decb5-acb5-420d-83c6-056d9cca14cf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/average-weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/average-weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/cost_living_index.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/cost_living_index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/loadscripts/cityload.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/loadscripts/cityload.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/loadscripts/countryload.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/loadscripts/countryload.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/sunrise-sunset.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/sunrise-sunset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/world_happiness.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/world_happiness.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +66,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="cityload" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="expatability" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts/loadscripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/loadscripts/cityload.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="countryload" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="expatability" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,27 +129,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sunrise-sunset (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="expatability" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/sunrise-sunset.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="expatability" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -156,10 +153,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.countryload" />
+        <item itemvalue="Python.cityload" />
         <item itemvalue="Python.immigrant" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.average-weather (1)" />
-        <item itemvalue="Python.sunrise-sunset (1)" />
       </list>
     </recent_temporary>
   </component>

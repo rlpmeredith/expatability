@@ -1,4 +1,3 @@
-import numpy as np
 import csv
 from time import time
 from sqlalchemy import Column, String
@@ -9,16 +8,13 @@ from sqlalchemy.orm import sessionmaker
 
 def load_data(file_name):
 
-    capital_list = []
-
     with open(file_name) as f:
         reader = csv.reader(f, delimiter=',' )
         next(reader)
-        list1 = list(reader)
-        capital_list.append(capital_list[2])
+        data = list(reader)
+        print(type(data))
 
-    data = np.unique(capital_list)
-    return data.tolist()
+    return data
 
 Base = declarative_base()
 
@@ -47,7 +43,7 @@ if __name__ == "__main__":
         data = load_data(file_name)
         for i in data:
             print(i)
-            record = Capital(capital=i)
+            record = Capital(capital=i[2], country_or_territory=i[0], population=i[1])
             s.add(record)
 
         s.commit()

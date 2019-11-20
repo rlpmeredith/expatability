@@ -1,5 +1,5 @@
-import numpy as np
 import csv
+import numpy as np
 from time import time
 from sqlalchemy import Column, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -7,26 +7,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-def load_data(file_name, file_name_2):
+def load_data(file_name):
 
-    country1list = []
-    country2list = []
-
+    finallist =[]
     with open(file_name) as f:
-        reader1 = csv.reader(f, delimiter=',' )
-        next(reader1)
-        list1 = list(reader1)
-    for country1 in list1:
-        country1list.append(country1[1])
+        reader = csv.reader(f, delimiter=',' )
+        next(reader)
+        country_list = list(reader)
+    for country in country_list:
+        finallist.append(country[0])
 
-    with open(file_name_2) as f2:
-        reader2 = csv.reader(f2, delimiter=',' )
-        next(reader2)
-        list2 = list(reader2)
-    for country2 in list2:
-        country2list.append(country2[0])
-
-    data = np.unique(country1list + country2list)
+    data = np.unique(finallist)
     return data.tolist()
 
 Base = declarative_base()
@@ -51,11 +42,9 @@ if __name__ == "__main__":
     s = session()
 
     try:
-        file_name = "../../data/world_happiness.csv"
-        file_name_2 = "../../data/immigrant.csv"
-        data = load_data(file_name, file_name_2)
+        file_name = "../../data/ctry_capitals.csv"
+        data = load_data(file_name)
         for i in data:
-            print(i)
             record = Country(country_or_territory=i)
             s.add(record)
 
