@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f3decb5-acb5-420d-83c6-056d9cca14cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/loadscripts/cityload.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ctry_capitals.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ctry_capitals.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ctry_capitals_wiki.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ctry_capitals_wiki.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/loadscripts/cityload.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/loadscripts/countryload.py" beforeDir="false" afterPath="$PROJECT_DIR$/loadscripts/countryload.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/loadscripts/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/loadscripts/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/config.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

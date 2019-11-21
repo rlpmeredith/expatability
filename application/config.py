@@ -13,8 +13,7 @@ class Config(object):
     db_schema = os.environ.get('DB SCHEMA', 'schema')
 
      # mysql
-    # SQLALCHEMY_DATABASE_URI = f'mysql://{db_user}:{db_password}@{db_host}/{db_schema}'
-    SQLALCHEMY_DATABASE_URI = f'mysql://admin:Leia0701!@localhost/expatability'
+    SQLALCHEMY_DATABASE_URI = f'mysql://{db_user}:{db_password}@{db_host}/{db_schema}'
 
 
 
