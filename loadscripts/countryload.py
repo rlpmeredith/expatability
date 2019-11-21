@@ -1,33 +1,37 @@
 import csv
+import numpy as np
 from time import time
 from sqlalchemy import Column, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from application import models
 
+# Configure SQL Alchemy logging
+
+import logging
+
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+
+# Function to load data from csv file and return a unique list
 
 def load_data(file_name):
 
+    finallist =[]
     with open(file_name) as f:
         reader = csv.reader(f, delimiter=',' )
         next(reader)
-        data = list(reader)
-        print(type(data))
+        country_list = list(reader)
+    for country in country_list:
+        finallist.append(country[0])
 
-    return data
-
-Base = declarative_base()
-
-
-class Capital(Base):
-    __tablename__ = 'capitals'
-
-    capital = Column(String(64),
-                     primary_key=True)
-
+    data = np.unique(finallist)
+    return data.tolist()
 
 if __name__ == "__main__":
     t = time()
+    Base = declarative_base()
 
     #Create the database engine
     engine = create_engine('mysql://admin:Leia0701!@localhost/expatability')
@@ -39,15 +43,15 @@ if __name__ == "__main__":
     s = session()
 
     try:
-        file_name = "../../data/ctry_capitals.csv"
+        file_name = "../data/ctry_capitals.csv"
         data = load_data(file_name)
         for i in data:
-            print(i)
-            record = Capital(capital=i[2], country_or_territory=i[0], population=i[1])
+            record = models.Country(country_or_territory=i)
             s.add(record)
 
         s.commit()
-    except:
+    except Exception as e:
+        print(e)
         s.rollback()
     finally:
         s.close()

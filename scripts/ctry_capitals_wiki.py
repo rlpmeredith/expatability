@@ -1,13 +1,13 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+from unidecode import unidecode
 
 
 # REQUEST HTML AS TEXT FROM WIKIPEDIA SITE
 
 source = requests.get('https://simple.wikipedia.org/wiki/List_of_European_countries').text
 soup = BeautifulSoup(source, 'lxml')
-# print(soup.prettify())
 
 # USE BEAUTIFULSOUP TO EXTRACT THE TABLE
 
@@ -26,14 +26,15 @@ for tr in table_rows:
     td = tr.findAll('td')
     row = [i.text.replace('\n', ' ').strip() for i in td]
     row_list.append(row)
-# print(row_list)
 
-
-# CREATE DATAFRAME WITH PANDAS AND SPECIFY NEW COLUMN NAMES, REMOVE UNWANTED COLUMNS
+# Create dataframe with Pandas and specify new column names, remove unwanted columns and clean data
 
 df = pd.DataFrame(row_list, columns=['Country_or_Territory', 'Area', 'Population', 'Pop_density', 'Capital'])
-# print(df)
 df.dropna(axis=0, how='any', inplace=True)
 df.drop(['Area', 'Pop_density'], axis=1, inplace=True)
+df['Population'] = df['Population'].str.replace(',', '')
+df['Population'] = df['Population'].apply(pd.to_numeric, errors='coerce')
+
+df['Capital'] = df['Capital'].apply(unidecode)
 
 df.to_csv('../data/ctry_capitals.csv', index=False)
