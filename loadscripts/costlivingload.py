@@ -1,8 +1,6 @@
 import csv
-import numpy as np
 import os
 from time import time
-from sqlalchemy import Column, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -13,34 +11,33 @@ from application import models
 import logging
 
 logging.basicConfig()
-logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+
 
 db_user = os.environ.get('DB_USER')
 db_password = os.environ.get('DB_PASSWORD')
 db_host = os.environ.get('DB_HOST')
 db_schema = os.environ.get('DB_SCHEMA')
 
-# Function to load data from csv file and return a unique list
+
+# Function to load csv data and return list
 
 def load_data(file_name):
 
-    finallist =[]
     with open(file_name) as f:
         reader = csv.reader(f, delimiter=',' )
         next(reader)
-        country_list = list(reader)
-    for country in country_list:
-        finallist.append(country[0])
+        data = list(reader)
 
-    data = np.unique(finallist)
-    return data.tolist()
+    return data
+
 
 if __name__ == "__main__":
     t = time()
     Base = declarative_base()
 
     #Create the database engine
-    engine = create_engine(f'mysql://{db_user}:{db_password}@{db_host}/{db_schema}')
+    engine = create_engine(f'mysql://{db_user}:{db_password}@{db_host}/{db_schema}?charset=utf8', encoding='utf-8')
     Base.metadata.create_all(engine)
 
     #Create the session
@@ -49,10 +46,16 @@ if __name__ == "__main__":
     s = session()
 
     try:
-        file_name = "../data/ctry_capitals.csv"
+        file_name = "../data/cost_living_index.csv"
         data = load_data(file_name)
+        print(type(data))
+        print(len(data))
         for i in data:
-            record = models.Country(country_or_territory=i)
+            record = models.Cost(capital=i[0], price_index=i[1],
+                                      rank=i[2], avg_business_lunch=i[3],
+                                      avg_rent_85m2_standard=i[4],
+                                      public_trans_monthly=i[5]
+                                      )
             s.add(record)
         s.commit()
 

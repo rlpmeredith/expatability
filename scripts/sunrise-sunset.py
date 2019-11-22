@@ -49,18 +49,18 @@ citydata = []
 with open(cityfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for city in csv_reader:
-        lat, lng = get_latlong(city[2])
-        short, long = get_shortest_longest_day(lat, lng)
-        info = {
-            "city": city[3],
-            "lat": lat,
-            "lng": lng,
-            "shortest_day": short,
-            "longest_day": long
-        }
-        citydata.append(info)
+        print(city)
+        if city[2] != 'Capital':
+            lat, lng = get_latlong(city[2])
+            short, long = get_shortest_longest_day(lat, lng)
+            info = {
+                "city": city[2],
+                "lat": lat,
+                "lng": lng,
+                "shortest_day": short,
+                "longest_day": long
+            }
+            citydata.append(info)
     df = pd.DataFrame(citydata)
 
 df.to_csv(daydata, index=False)
-
-

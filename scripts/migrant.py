@@ -44,5 +44,5 @@ with open(cityfile) as csv_file:
             immigrant_data.append(info)
 
 df = pd.DataFrame(immigrant_data)
-immigrant_data = '../data/immigrant.csv'
+immigrant_data = '../data/migrant.csv'
 df.to_csv(immigrant_data, index=False )

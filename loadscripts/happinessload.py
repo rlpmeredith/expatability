@@ -1,8 +1,6 @@
 import csv
-import numpy as np
 import os
 from time import time
-from sqlalchemy import Column, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -13,27 +11,26 @@ from application import models
 import logging
 
 logging.basicConfig()
-logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+
 
 db_user = os.environ.get('DB_USER')
 db_password = os.environ.get('DB_PASSWORD')
 db_host = os.environ.get('DB_HOST')
 db_schema = os.environ.get('DB_SCHEMA')
 
-# Function to load data from csv file and return a unique list
+
+# Function to load csv data and return list
 
 def load_data(file_name):
 
-    finallist =[]
     with open(file_name) as f:
         reader = csv.reader(f, delimiter=',' )
         next(reader)
-        country_list = list(reader)
-    for country in country_list:
-        finallist.append(country[0])
+        data = list(reader)
 
-    data = np.unique(finallist)
-    return data.tolist()
+    return data
+
 
 if __name__ == "__main__":
     t = time()
@@ -49,10 +46,16 @@ if __name__ == "__main__":
     s = session()
 
     try:
-        file_name = "../data/ctry_capitals.csv"
+        file_name = "../data/world_happiness.csv"
         data = load_data(file_name)
+        print(type(data))
+        print(len(data))
         for i in data:
-            record = models.Country(country_or_territory=i)
+            record = models.Happiness(rank=i[0], country=i[1],
+                                      score=i[2], healthy_life_expectancy=i[5],
+                                      freedom_to_make_life_choices=i[6],
+                                      generosity=i[7], perceptions_of_corruption=i[8]
+                                      )
             s.add(record)
         s.commit()
 

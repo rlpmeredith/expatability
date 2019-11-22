@@ -122,12 +122,12 @@ class AvgWeather(db.Model):
     jan_avg = db.Column(db.Integer,
                              index=False,
                              unique=False,
-                             nullable=False)
+                             nullable=True)
 
     july_avg = db.Column(db.Integer,
                            index=False,
                            unique=False,
-                           nullable=False)
+                           nullable=True)
 
 
 class Sun(db.Model):
