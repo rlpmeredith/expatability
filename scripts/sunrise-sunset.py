@@ -2,8 +2,7 @@ import requests
 import csv
 import pprint
 import pandas as pd
-
-
+from unidecode import unidecode
 
 def get_latlong(city):
 
@@ -62,5 +61,5 @@ with open(cityfile) as csv_file:
             }
             citydata.append(info)
     df = pd.DataFrame(citydata)
-
+df['city'] = df['city'].apply(unidecode)
 df.to_csv(daydata, index=False)

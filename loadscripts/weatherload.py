@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 from time import time
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
@@ -51,20 +52,20 @@ if __name__ == "__main__":
         print(type(data))
         print(len(data))
         for i in data:
-            print(type(i[1]))
             cap = i[0]
-            if i[1] != '':
-                jan = int(i[1])
-            else:
-                jan = None
-            if i[2] != '':
-                jul = int(i[2])
-            else:
-                jul = None
-            record = models.AvgWeather(capital=cap, jan_avg=jan, july_avg=jul)
-            s.add(record)
-            print(i)
-        s.commit()
+            if cap != "Capital":
+                if i[1] != '':
+                    jan = int(i[1])
+                else:
+                    jan = None
+                if i[2] != '':
+                    jul = int(i[2])
+                else:
+                    jul = None
+                record = models.AvgWeather(capital=cap, jan_avg=jan, july_avg=jul)
+                s.add(record)
+                print(i)
+            s.commit()
 
     except Exception as e:
         print(e)

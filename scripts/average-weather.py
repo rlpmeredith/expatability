@@ -3,7 +3,7 @@ import csv
 import pprint
 import pandas as pd
 from bs4 import BeautifulSoup
-import re
+from unidecode import unidecode
 
 def average_weather(city):
 
@@ -57,8 +57,8 @@ with open(cityfile) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for city in csv_reader:
         if city[0]:
-            print(city[3])
-            jan, july = average_weather(city[3])
+            print(city[2])
+            jan, july = average_weather(city[2])
             info = {
                 "city": city[2],
                 "jan_avg": jan,
@@ -66,5 +66,5 @@ with open(cityfile) as csv_file:
             }
             data.append(info)
     df = pd.DataFrame(data)
-
+df['city'] = df['city'].apply(unidecode)
 df.to_csv(tempdata, index=False)

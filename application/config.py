@@ -5,8 +5,7 @@ class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = '12345'
-    
+
     db_user = os.environ.get('DB_USER')
     db_password = os.environ.get('DB_PASSWORD')
     db_host = os.environ.get('DB_HOST')

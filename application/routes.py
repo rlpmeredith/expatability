@@ -6,33 +6,51 @@ from . import db
 from .models import *
 
 
+@app.route('/api/citylist', methods=['GET'])
+def get_cityList():
 
-# @app.route('/', methods=['GET'])
-# def chat():
-#     user_id = request.args['user_id']
-#     my_user = User.query.filter(User.user_id == user_id).first()
-#     username = my_user.first_name
-    #return username
+    order = request.args.get('order')
+
+    cityreturnlist = []
+
+    if order == "cost":
+        citylist = Cost.query.order_by(Cost.price_index.desc())
+        for row in citylist:
+            citydict = {row.capital: row.price_index}
+            cityreturnlist.append(citydict)
+    elif order == "daylength":
+        citylist = Sun.query.order_by(Sun.shortest_day.desc())
+        for row in citylist:
+            citydict = {row.capital: row.shortest_day}
+            cityreturnlist.append(citydict)
+    elif order == "weather":
+        citylist = AvgWeather.query.order_by(AvgWeather.jan_avg.desc())
+        for row in citylist:
+            citydict = {row.capital: row.jan_avg}
+            cityreturnlist.append(citydict)
+    elif order == "migrants":
+        citylist = Migrant.query.order_by(Migrant.index.desc())
+        for row in citylist:
+            citydict = {row.country: row.index}
+            cityreturnlist.append(citydict)
+    elif order == "happiness":
+        citylist = Happiness.query.order_by(Happiness.score.desc())
+        for row in citylist:
+            citydict = {row.country: row.score}
+            cityreturnlist.append(citydict)
+
+    return jsonify(cityreturnlist)
 
 
-@ExpatabilityApi.route('/', methods=['GET'])
-def get_happinessList():
-
-    happinessList =  Happiness.query.filter(Happiness.capital == capital).order_by(City.capital).all()
-    if len(happinessList) == 0:
-        return "No messages found", 404
-    return jsonify([x.to_dict() for x in happinessList]), 200
 
 
-
-
-@ChatApi.route('/<chat_id>/messages', methods=['GET'])
-def get_chatmessages(chat_id):
-
-    chat_messages = Message.query.filter(Message.chat_id == chat_id).order_by(Message.message_id).all()
-    if len(chat_messages) == 0:
-        return "No messages found", 404
-    return jsonify([x.to_dict() for x in chat_messages]), 200
+# @ChatApi.route('/<chat_id>/messages', methods=['GET'])
+# def get_chatmessages(chat_id):
+#
+#     chat_messages = Message.query.filter(Message.chat_id == chat_id).order_by(Message.message_id).all()
+#     if len(chat_messages) == 0:
+#         return "No messages found", 404
+#     return jsonify([x.to_dict() for x in chat_messages]), 200
 
 
 

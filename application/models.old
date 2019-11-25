@@ -2,12 +2,12 @@ from . import db
 import sqlalchemy
 
 
+
 class City(db.Model):
     __tablename__ = 'capitals'
 
     capital = db.Column(db.String(64),
                         primary_key=True)
-    costs = db.relationship('Cost', backref='city', lazy='dynamic')
 
     country_or_territory = db.Column(db.String(64),
                         db.ForeignKey('countries.country_or_territory'),
@@ -26,7 +26,6 @@ class Country(db.Model):
 
     country_or_territory = db.Column(db.String(64),
                                      primary_key=True)
-    cities = db.relationship('City', backref='country', lazy='dynamic')
 
 
 class Cost(db.Model):
