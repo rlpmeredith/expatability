@@ -29,14 +29,19 @@ def get_cityList():
             citydict = {row.capital: row.jan_avg}
             cityreturnlist.append(citydict)
     elif order == "migrants":
-        citylist = Migrant.query.order_by(Migrant.index.desc())
+        citylist = db.session.query(City.capital, Migrant.index)\
+            .filter(City.country_or_territory == Migrant.country)\
+            .order_by(Migrant.index.desc()).all()
+        print(type(citylist))
         for row in citylist:
-            citydict = {row.country: row.index}
+            citydict = {row[0]: row[1]}
             cityreturnlist.append(citydict)
     elif order == "happiness":
-        citylist = Happiness.query.order_by(Happiness.score.desc())
+        citylist = db.session.query(City.capital, Happiness.score)\
+            .filter(City.country_or_territory == Happiness.country)\
+            .order_by(Happiness.score.desc()).all()
         for row in citylist:
-            citydict = {row.country: row.score}
+            citydict = {row[0]: row[1]}
             cityreturnlist.append(citydict)
 
     return jsonify(cityreturnlist)

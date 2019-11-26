@@ -9,6 +9,7 @@ class City(db.Model):
                         primary_key=True)
     costs = db.relationship('Cost', backref='city', lazy='dynamic')
 
+
     country_or_territory = db.Column(db.String(64),
                         db.ForeignKey('countries.country_or_territory'),
                         index=True,
@@ -26,7 +27,8 @@ class Country(db.Model):
 
     country_or_territory = db.Column(db.String(64),
                                      primary_key=True)
-    cities = db.relationship('City', backref='country', lazy='dynamic')
+    cities = db.relationship('City', backref='citycountry', lazy='dynamic')
+    migrant = db.relationship('Migrant', backref='migrantcountry', lazy='dynamic')
 
 
 class Cost(db.Model):
@@ -111,7 +113,6 @@ class Migrant(db.Model):
                              index=False,
                              unique=False,
                              nullable=False)
-
 
 class AvgWeather(db.Model):
     __tablename__ = 'average_weather_jan_july'
