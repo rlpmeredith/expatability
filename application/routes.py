@@ -7,10 +7,9 @@ from .models import *
 
 
 
-# create HTML file
 @app.route('/')
-def hello():
-    return render_template('hello.html')
+def index():
+    return render_template('index.html')
 
 
 
