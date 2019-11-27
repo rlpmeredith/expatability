@@ -1,6 +1,5 @@
 
-Vue.use(Vuetify)
-
+//console.log("Hello from app.js!")
 
 const app = new Vue({
       el: '#app',
