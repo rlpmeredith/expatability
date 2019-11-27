@@ -6,6 +6,14 @@ from . import db
 from .models import *
 
 
+
+# create HTML file
+@app.route('/')
+def hello():
+    return render_template('hello.html')
+
+
+
 @app.route('/api/citylist', methods=['GET'])
 def get_cityList():
 
@@ -56,12 +64,3 @@ def get_cityList():
 #     if len(chat_messages) == 0:
 #         return "No messages found", 404
 #     return jsonify([x.to_dict() for x in chat_messages]), 200
-
-
-
-#@ToDoApi.route('/<name>')
-#def get_task(name):
-#    task = ToDoItem.query.filter(ToDoItem.name == name).first()
-#    if task is None:
-#        return 'task not found', 404
-#    return jsonify(task.to_dict()), 200
