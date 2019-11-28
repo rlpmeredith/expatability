@@ -8,32 +8,7 @@ const app = new Vue({
       },
       methods: {
             clicked: function() {
-                this.message = 'Hello, my name is Kimberlee!'
+                console.log('test clicked')
             }
       },
 })
-
-
-
-//new Vue({
-//      el: '#app',
-//      vuetify: new Vuetify(),
-//      data () {
-//        return {
-//          items: [
-//            {
-//              src: 'static/images/paris.jpg',
-//            },
-//            {
-//              src: 'static/images/London.jpg',
-//            },
-//            {
-//              src: 'static/images/Stockholm.jpg',
-//            },
-//            {
-//              src: 'static/images/Valletta.jpg',
-//            },
-//          ],
-//        }
-//      },
-//})
