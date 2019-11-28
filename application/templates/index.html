@@ -10,43 +10,45 @@
   <div id="app">
     <v-app>
       <v-content>
-      <v-toolbar>
-      <v-toolbar-title>Expatability</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-toolbar-items>
-        <v-btn text>Link 1</v-btn>
-        <v-btn text>Link 2</v-btn>
-        <v-btn text>Link 3</v-btn>
-      </v-toolbar-items>
-
-      <template v-if="$vuetify.breakpoint.smAndUp">
-        <v-btn icon>
-          <v-icon>mdi-export-variant</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-delete-circle</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-plus-circle</v-icon>
-        </v-btn>
-      </template>
-    </v-toolbar>
-    <v-row align="center" justify="center">
-    <v-img
-      src="static/images/paris.jpg"
-      aspect-ratio="1"
-      class="grey lighten-2"
-      max-width="500"
-      max-height="300"
-
-    ></v-img>
-  </v-row>
-
+        <v-toolbar>
+          <v-toolbar-title>Expatability</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn text>HOME</v-btn>
+            <v-btn text>CITY SEARCH</v-btn>
+            <v-btn text>ABOUT</v-btn>
+          </v-toolbar-items>
+          <template v-if="$vuetify.breakpoint.smAndUp">
+            <v-btn icon>
+              <v-icon>mdi-export-variant</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-delete-circle</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-plus-circle</v-icon>
+            </v-btn>
+          </template>
+        </v-toolbar>
+        <v-parallax
+          dark
+          src='static/images/sign.jpg'
+        >
+          <v-row
+            align="center"
+            justify="center"
+          >
+            <v-col class="text-center" cols="12">
+              <h1 class="display-1 font-weight-thin mb-4">Expatability</h1>
+              <h4 class="subheading">Find out where it makes sense for YOU to move!</h4>
+              <v-btn rounded color="blue-grey" dark>Get started with some questions!</v-btn>
+            </v-col>
+          </v-row>
+        </v-parallax>
       </v-content>
     </v-app>
   </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
@@ -54,3 +56,10 @@
 
 </body>
 </html>
+
+
+<template>
+  <div class="text-center">
+    <v-btn rounded color="primary" dark>Rounded Button</v-btn>
+  </div>
+</template>
