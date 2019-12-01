@@ -9,66 +9,100 @@
 <body>
   <div id="app">
     <v-app>
-      <v-content>
-        <v-toolbar>
-          <v-toolbar-title>Expatability</v-toolbar-title>
+        <v-app-bar class="blue-grey lighten-5" >
+          <v-toolbar-title class="headline text-sentencecase font-weight-thin">
+            <span>Expatability</span>
+          </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn text>HOME</v-btn>
-            <v-btn text>CITY SEARCH</v-btn>
-            <v-btn text>ABOUT</v-btn>
+            <v-btn text
+              class="font-weight-light"
+              >CITY SEARCH
+            </v-btn>
+            <v-btn text
+              class="font-weight-light"
+              >ABOUT
+            </v-btn>
           </v-toolbar-items>
           <template v-if="$vuetify.breakpoint.smAndUp">
             <v-btn icon>
-              <v-icon>mdi-export-variant</v-icon>
+              <v-icon>mdi-home</v-icon>
             </v-btn>
             <v-btn icon>
-              <v-icon>mdi-delete-circle</v-icon>
-            </v-btn>
-            <v-btn icon>
-              <v-icon>mdi-plus-circle</v-icon>
+              <v-icon>mdi-email-send-outline</v-icon>
             </v-btn>
           </template>
-        </v-toolbar>
-        <v-parallax
-          dark
-          src='static/images/sign.jpg'
-        >
-          <v-row
-            align="center"
-            justify="center"
+        </v-app-bar>
+        <v-content>
+          <v-parallax
+            dark
+            src='static/images/sign.jpg'
           >
-            <v-col class="text-center" cols="12">
-              <h1 class="display-1 font-weight-thin mb-4">Expatability</h1>
-              <h4 class="subheading">Find out where it makes sense for YOU to move!</h4>
-              <v-btn rounded color="blue-grey" dark>Get started with some questions!</v-btn>
-            </v-col>
-          </v-row>
-        </v-parallax>
-        <v-container class="grey lighten-5">
-    <v-row no-gutters>
-      <v-col>
-        <v-btn
-                x-large color="success"
-                dark
-                v-on:click.native="clicked()"
+            <v-row
+              align="center"
+              justify="center"
+            >
+              <v-col class="text-center" cols="12">
+                <h1 class="headline-text mb-4">Expatability</h1>
+                <h4 class="subheading font-weight-regular">The power of knowing where
+                  <br />
+                  it makes the most sense for you to move</h4>
+                <v-btn
+                  rounded
+                  large
+                  color="blue-grey"
+                  class="text-capitalize white--text font-weight-light center pa-3 mt-10"
+                  v-on:click.native="proceed()"
+                  >Get started with some questions!
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-parallax>
+
+          <v-card
+            class="mx-auto ma-8"
+            max-width="1000"
+            >
+              <v-spacer></v-spacer>
+
+            <v-container fluid>
+              <v-row dense>
+                <v-col
+                  v-for="card in cards"
+                  :key="card.title"
+                  :cols="card.flex"
                 >
-                Robs Button
-        </v-btn>
-      </v-col>
-      <v-col>
-        <v-btn x-large color="success" dark>Extra large Button</v-btn>
-      </v-col>
-      <v-col>
-        <v-btn x-large color="success" dark>Extra large Button</v-btn>
-      </v-col>
-      <v-col>
-        <v-btn x-large color="success" dark>Extra large Button</v-btn>
-      </v-col>
-    </v-row>
-  </v-container>
-</template>
-      </v-content>
+                  <v-card>
+                    <v-img
+                      :src="card.src"
+                      class="white--text font-weight-light text-wrap align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                      height="230px"
+                    >
+                      <v-card-title v-text="card.title"></v-card-title>
+                    </v-img>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                        <v-spacer></v-spacer>
+                      <v-icon
+                        large
+                        v-on:click.native="proceed()"
+                      >
+                        mdi-arrow-right
+                      </v-icon>
+                    </v-card-actions>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+
+        </v-content>
+
+        <v-footer app>
+          <span>&copy; 2019</span>
+        </v-footer>
     </v-app>
   </div>
 
@@ -77,12 +111,6 @@
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script src="static/js/script.js"></script>
 
+
 </body>
 </html>
-
-
-<template>
-  <div class="text-center">
-    <v-btn rounded color="primary" dark>Rounded Button</v-btn>
-  </div>
-</template>
