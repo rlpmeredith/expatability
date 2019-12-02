@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="static/css/local.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
@@ -59,6 +60,7 @@
             </v-row>
           </v-parallax>
 
+
           <v-card
             class="mx-auto ma-8"
             max-width="1000"
@@ -97,6 +99,17 @@
               </v-row>
             </v-container>
           </v-card>
+
+          <v-data-table
+            :headers = "headers"
+            :items="citylist"
+            :items-per-page="10"
+            caption = "City List"
+            class="elevation-1"
+            dense
+            style="max-height: 300px; overflow-y: auto"
+          >
+          </v-data-table>
 
         </v-content>
 
