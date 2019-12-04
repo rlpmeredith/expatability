@@ -6,17 +6,23 @@ const app = new Vue({
             return {
             headers: [
                 {
-                  text: 'Cityname',
+                  text: 'City Name',
                   align: 'center',
                   sortable: 'false',
                   value: "cityname"
-                  },
-                { text: "Index", value: "index" }
-                ],
+                },
+
+            { text: 'Shortest Day', value: 'daylength' },
+//            { text: 'Migrant Acceptance Rank', value: 'migr_rank'},
+//            { text: 'Cost of Living Rank', value: 'cost_rank'},
+//            { text: 'Average January Temperature', value: 'weather'},
+//            { text: 'World Happiness Rank', value: 'happ_rank'},
+       ],
+
 //            citylist: [{"cityname": false, "index": false}],
             citylist: [],
             cards: [
-                { title: 'Does the amount of sunlight in a day matter to you?', src: './static/images/Valletta.jpg', flex: 4, sortorder: 'daylength' },
+                { title: 'Does the amount of sunlight in a day matter to you?', src: './static/images/Valletta.jpg', flex: 4, sortorder: 'daylength'},
                 { title: 'Do you want to see if a place ranks high in acceptance of immigrants?', src: './static/images/paris.jpg', flex: 4, sortorder: 'migrants' },
                 { title: 'How about looking at cities ranked by cost of living?', src: './static/images/London.jpg', flex: 4, sortorder: 'cost' },
                 { title: "Do you want to narrow your search based on a city's average temperature?", src: './static/images/Stockholm.jpg', flex: 4, sortorder: 'weather' },
