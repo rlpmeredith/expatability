@@ -11,9 +11,9 @@ const app = new Vue({
                   sortable: 'false',
                   value: "cityname"
                 },
-//            { text: 'Index', value: 'index' }
+            { text: 'Index', value: 'index' }
 
-            { text: 'Shortest Day', value: 'daylength' },
+//            { text: 'Shortest Day', value: 'daylength' },
 //            { text: 'Migrant Acceptance Rank', value: 'migr_rank'},
 //            { text: 'Cost of Living Rank', value: 'cost_rank'},
 //            { text: 'Average January Temperature', value: 'weather'},

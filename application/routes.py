@@ -24,17 +24,17 @@ def get_cityList():
     if order == "cost":
         citylist = Cost.query.order_by(Cost.price_index.desc())
         for row in citylist:
-            citydict = {'cityname': row.capital, 'cost_rank': row.rank}
+            citydict = {'cityname': row.capital, 'index': row.rank}
             cityreturnlist.append(citydict)
     elif order == "daylength":
         citylist = Sun.query.order_by(Sun.shortest_day.desc())
         for row in citylist:
-            citydict = {'cityname': row.capital, 'daylength': row.shortest_day}
+            citydict = {'cityname': row.capital, 'index': row.shortest_day}
             cityreturnlist.append(citydict)
     elif order == "weather":
         citylist = AvgWeather.query.order_by(AvgWeather.jan_avg.desc())
         for row in citylist:
-            citydict = {'cityname': row.capital, 'weather': row.jan_avg}
+            citydict = {'cityname': row.capital, 'index': row.jan_avg}
             cityreturnlist.append(citydict)
     elif order == "migrants":
         citylist = db.session.query(City.capital, Migrant.index)\
@@ -42,14 +42,14 @@ def get_cityList():
             .order_by(Migrant.index.desc()).all()
         print(type(citylist))
         for row in citylist:
-            citydict = {'cityname': row[0], 'migr_rank': row[1]}
+            citydict = {'cityname': row[0], 'index': row[1]}
             cityreturnlist.append(citydict)
     elif order == "happiness":
         citylist = db.session.query(City.capital, Happiness.score)\
             .filter(City.country_or_territory == Happiness.country)\
             .order_by(Happiness.score.desc()).all()
         for row in citylist:
-            citydict = {'cityname': row[0], 'happ_rank': row[1]}
+            citydict = {'cityname': row[0], 'index': row[1]}
             cityreturnlist.append(citydict)
 
     cityreturndict = {"citylist": cityreturnlist}
