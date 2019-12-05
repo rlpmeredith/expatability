@@ -23,9 +23,10 @@ table_rows = ctry_table.findAll('tr')
 row_list = []
 
 for tr in table_rows:
-    td = tr.findAll('td')
-    row = [i.text.replace('\n', ' ').strip() for i in td]
-    row_list.append(row)
+        td = tr.findAll('td')
+        row = [i.text.replace('\n', ' ').strip() for i in td if i != '']
+        row_list.append(row)
+        row_list = list(filter(None, row_list))
 
 # Create dataframe with Pandas and specify new column names, remove unwanted columns and clean data
 

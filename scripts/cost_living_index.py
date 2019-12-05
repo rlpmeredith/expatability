@@ -56,10 +56,13 @@ def city_pages(city):
         rows = cost_table.findAll('tr')
         row_list = []
 
+
         for tr in rows:
             td = tr.findAll('td')
             row = [i.text.replace('\n', ' ').strip() for i in td]
+
             if len(row) > 1:
+
                 if row[1] == 'Basic lunchtime menu (including a drink) in the business district':
                     new_list = ['Lunchtime_menu', row[2]]
                     row_list.append(new_list)
@@ -79,6 +82,7 @@ def city_pages(city):
 
 data = web_scraper()
 # print(data)
+
 cost_data = []
 src_file = "../data/ctry_capitals.csv"
 
@@ -87,7 +91,7 @@ with open(src_file) as csv_file:
     for capital in csv_reader:
         name = capital[2]
         name = name.replace(" ", "-")
-        print(name)
+        # print(name)
 
         if name and name != 'Capital':
 
@@ -98,7 +102,7 @@ with open(src_file) as csv_file:
                 monthly_rent = capital_data[1][1]
                 public_trans = capital_data[2][1]
 
-                print(public_trans)
+                # print(public_trans)
 
                 for x in data:
                     if name == x[1]:
@@ -121,4 +125,8 @@ with open(src_file) as csv_file:
 
 df = pd.DataFrame(cost_data)
 df.dropna(axis=0, how='any', inplace=True)
+
+for col in ['Lunch', 'Rent', 'Public_trans']:
+    df[col] = df[col].str.extract('(\d+)', expand=False)
+
 df.to_csv('../data/cost_living_index.csv', index=False)

@@ -11,6 +11,7 @@ const app = new Vue({
                   sortable: 'false',
                   value: "cityname"
                 },
+//            { text: 'Index', value: 'index' }
 
             { text: 'Shortest Day', value: 'daylength' },
 //            { text: 'Migrant Acceptance Rank', value: 'migr_rank'},
@@ -18,6 +19,8 @@ const app = new Vue({
 //            { text: 'Average January Temperature', value: 'weather'},
 //            { text: 'World Happiness Rank', value: 'happ_rank'},
        ],
+
+            message: 'proceed',
 
 //            citylist: [{"cityname": false, "index": false}],
             citylist: [],
@@ -30,12 +33,16 @@ const app = new Vue({
                 { title: 'Or would you like to search for a particular city?', src: './static/images/sign.jpg', flex: 4 },
             ]}
        },
+
        methods: {
             get_data(sortorder) {
                 const self = this;
                 const url = `api/citylist?order=${sortorder}`
                 fetch(url).then(res => res.json())
                 .then(json => self.citylist = json['citylist'])
-                }
+                },
+            proceed() {
+                console.log('Proceeding to questions')
+            }
       }
 })
