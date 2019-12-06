@@ -66,5 +66,6 @@ with open(cityfile) as csv_file:
             }
             data.append(info)
     df = pd.DataFrame(data)
+    df = df.dropna(how='any', axis=0)
 df['city'] = df['city'].apply(unidecode)
 df.to_csv(tempdata, index=False)

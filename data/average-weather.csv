@@ -1,7 +1,5 @@
 city,jan_avg,jul_avg
-Capital,,
 Tirana,7,24
-Andorra la Vella,,
 Vienna,-1,19
 Minsk,-5,20
 Brussels,3,18
@@ -20,9 +18,7 @@ Budapest,-1,21
 Reykjavik,0,11
 Dublin,5,16
 Rome,8,26
-Pristina,,
 Riga,-4,17
-Vaduz,,
 Vilnius,-5,17
 Luxembourg,0,18
 Skopje,1,24

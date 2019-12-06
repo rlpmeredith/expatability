@@ -28,6 +28,7 @@ for tr in table_rows:
         row_list.append(row)
         row_list = list(filter(None, row_list))
 
+
 # Create dataframe with Pandas and specify new column names, remove unwanted columns and clean data
 
 df = pd.DataFrame(row_list, columns=['Country_or_Territory', 'Area', 'Population', 'Pop_density', 'Capital'])
