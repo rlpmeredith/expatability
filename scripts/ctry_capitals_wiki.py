@@ -27,7 +27,7 @@ for tr in table_rows:
         row = [i.text.replace('\n', ' ').strip() for i in td if i != '']
         row_list.append(row)
         row_list = list(filter(None, row_list))
-
+# print(row_list)
 
 # Create dataframe with Pandas and specify new column names, remove unwanted columns and clean data
 
